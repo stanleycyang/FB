@@ -36,7 +36,7 @@ $top-size: 70px;
 	width: 100%;
 	position: fixed;
 	left: 0;
-	z-index: 1;
+	z-index: 3;
 }
 @mixin full_size
 {
@@ -242,7 +242,7 @@ div#home_login_form
 }
 
 
-form#new_user, div#login_page > form#login_form
+form#new_user,form.edit_user, div#login_page > form#login_form
 {
 	input[type="text"], input[type="password"]
 	{

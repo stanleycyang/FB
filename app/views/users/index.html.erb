@@ -1,6 +1,35 @@
-<% @users.each do |user| %>
+<% provide(:title, "All users") %>
+<div class="container">
+	<div class="col-md-6 col-md-offset-3">
 
-	<p><%= user.name %></p>
-	<p><%= user.email %></p>
+		<h1>All users</h1>
+		<%= will_paginate %>
+		<table class="table table-hover">
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<% if current_user.admin? %>
+				<th>Email</th>	
+				<% end %>
+			</tr>
+			
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= link_to user.id, user %></td>
+			  	<td><%= link_to user.name, user %></td>
+			  	<% if current_user.admin? %>
+			  	<td><%= link_to user.email, user %></td>
+			  	<% end %>
+			  	<% if current_user.admin? && !current_user?(user) %>
 
-<% end %>
+    			<td><%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" } %></td>
+  				<% end %>
+			</tr>
+			<% end %>
+
+		</table>
+		<%= will_paginate %>
+
+	</div>
+</div>
+

@@ -42,4 +42,21 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
+  # Check ifu ser is current user
+  def current_user?(user)
+    user == current_user
+  end
+
+  # Redirect back to friendly URL
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # use session method to store url
+  def store_location
+    # Request.get prevents saving posts/updates
+    session[:forwarding_url] = request.url if request.get?
+  end
+
 end

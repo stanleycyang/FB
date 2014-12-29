@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+  
+  # Run the private method logged_in_user on edit and update actions
+  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :delete
+
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -28,15 +35,46 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(get_params)
+      flash[:success] = "Profile updated!"
+      redirect_to edit_user_url
+    else
+      flash.now[:danger] = "Invalid updates"
+      render 'edit'
+    end
+    
   end
 
   def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted!"
+    redirect_to users_url
   end
 
   private
 
   def get_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in"
+      redirect_to login_url
+    end
+  end
+
+  # Confirms correct user
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
+  # Determine whether user is an admin
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 
 end

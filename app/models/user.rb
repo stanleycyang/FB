@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   has_secure_password
   
   validates :password, 
-    length: {minimum: 6}
+    length: {minimum: 6},
+    allow_blank: true # has_secure_password makes sure passwords are filled upon signup
 
     # Returns the hash digest of the given string
   def User.digest(string)

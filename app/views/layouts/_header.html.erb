@@ -17,7 +17,10 @@
 					  
 						<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="header_menu_dropdown">
 
-							<li role="presentation"><%= link_to "Settings", '#' %></li>
+
+							<li role="presentation"><%= link_to "Users", users_path %></li>
+
+							<li role="presentation"><%= link_to "Settings", edit_user_path(current_user) %></li>
 							<li role="presentation" class="divider"></li>
 							<li role="presentation"><%= link_to "Log out", logout_path, method: "delete" %></li>
 						</ul>
