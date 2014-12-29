@@ -12,7 +12,7 @@ $font: 'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,
 
 // Define sizing
 
-$top-size: 55px;
+$top-size: 70px;
 
 
 // mixins: A class which contains a combintation of methods from other classes
@@ -55,7 +55,10 @@ header
 		color: $white;	
 		font-size: 2.4em;
 		font-weight: bold;	
-		margin-left: 4%;			
+		position: relative;
+		top: 9px;
+		left: 4%;
+
 		&:hover
 		{
 			color: $white;
@@ -70,7 +73,8 @@ html, body
 	>div
 	{		
 		position: relative;	
-		top: $top-size;						
+		top: $top-size;	
+		height: 100%;					
 	}	
 	@include full_size;
 	@include clean_box;
@@ -125,7 +129,7 @@ nav#logged_in_nav
 	// color: $white;
 	position: absolute;
 	right: 4%;
-	top: 10px;		
+	top: 18px;		
 
 	a.head_nav_links, div.dropdown{
 		display: inline-block;	
@@ -138,6 +142,7 @@ nav#logged_in_nav
 		b#header_menu_dropdown
 		{			
 			font-size: 1.1em;
+			padding: 10px;
 			&:hover{
 				cursor: pointer;
 			}	
@@ -153,9 +158,10 @@ nav#logged_in_nav
 		padding: 8px;
 		border-radius: 3px;
 		margin-left: 20px;	
+		font-weight: 800;
 		&:hover
 		{
-			background-color: #337ab7;
+			background-color: $brand-primary;
 			text-decoration: none;
 
 		}
@@ -169,7 +175,7 @@ div#home
 {	
 	background-color: $light-gray;	
 	width: 100%;
-	height: 800px;	
+	height: 100%;	
 
 	div.home-features
 	{
@@ -200,7 +206,7 @@ div#home_login_form
 {
 	width: 400px;
 	right: 4%;
-	top: 10px;
+	top: 15px;
 	position: absolute;
 	form#login_form
 	{
@@ -214,8 +220,22 @@ div#home_login_form
 			font-size: 1em;					
 			padding: 9px 6px;
 			border-radius: 3px;
-			background-color: #337ab7;
+			background-color: $brand-primary;
 			border: 0;
+		}
+		label.checkbox 
+		{
+			position: absolute;
+			top: 24px;
+			left: 20px;
+			font-size: 0.8em;
+			color: $light-gray;
+			span
+			{
+				font-weight: 400;
+				position: relative;
+				top: 2px;
+			}
 		}
 	}
 
@@ -229,6 +249,13 @@ form#new_user, div#login_page > form#login_form
 		font-size: 1.3em;
 		height: 2.4em;
 		margin-bottom: 20px;
+	}
+
+	label.checkbox
+	{
+		position: relative;
+		top: -3px;
+		left: 20px;
 	}
 }
 
