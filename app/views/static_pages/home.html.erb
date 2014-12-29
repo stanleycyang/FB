@@ -1,0 +1,48 @@
+<% provide(:title, "Welcome") %>
+
+<div id="home" class="container">
+	
+	<div class="col-md-6 col-lg-6">
+		
+
+		<div class="home-features">
+			<h2>Connect with friends and the world around you on Facebook.</h2>
+			<ul>
+				<li>
+					<span class="glyphicon glyphicon-picture"></span> 
+
+					<b>See photos and updates</b> <small>from friends in News Feed.</small>
+				</li>
+
+				<li>
+					<span class="glyphicon glyphicon-tasks"></span> 
+
+					<b>Share what's new</b> <small>in your life on your Timeline.</small>
+				</li>
+
+				<li>
+					<span class="glyphicon glyphicon-zoom-in"></span> 
+
+					<b>Find more</b> <small>of what you're looking for with Graph Search.</small>
+				</li>
+				
+				
+			</ul>
+		</div>
+		
+
+	</div>
+
+	<div class="col-md-6 col-lg-6">		
+		
+		<div class="home-features">
+			
+			<!-- <%= button_to "Sign up", signup_path, class: 'btn btn-lg btn-success', method: 'get' %> -->
+
+			<%= render "shared/signup_form" %>
+
+		</div>
+			
+		
+	</div>
+</div>

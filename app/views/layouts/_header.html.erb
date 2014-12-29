@@ -1,0 +1,40 @@
+
+
+<header>
+	<div class="container-fluid">
+		<%= link_to "facebook", root_path, id: "brand" %>	
+
+			<% if logged_in? %>
+
+				<nav id="logged_in_nav">
+					
+					<%= link_to @current_user.name, @current_user, class: "head_nav_links" %>
+					<%= link_to "Home", root_path, class: "head_nav_links" %>
+					<!-- Dropdown -->
+					<div class="dropdown">					  
+					    
+					    <b class="glyphicon glyphicon-collapse-down" id="header_menu_dropdown" data-toggle="dropdown" aria-expanded="true"></b>
+					  
+						<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="header_menu_dropdown">
+
+							<li role="presentation"><%= link_to "Settings", '#' %></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><%= link_to "Log out", logout_path, method: "delete" %></li>
+						</ul>
+					   
+					</div>
+				</nav>
+
+			<% else %>
+				<!-- If the person is logged in -->
+
+				<div id="home_login_form" class="hidden-xs hidden-md">
+					<%= render 'shared/login_form' %>	
+				</div>
+
+			<% end %>
+		
+		
+	</div>
+	
+</header>

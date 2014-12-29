@@ -1,0 +1,10 @@
+<%= form_for(:session, url: login_path, html: {id: 'login_form'}) do |f| %>
+
+			
+	<%= f.text_field :email, class: "form-control", placeholder: "Email address", autofocus: true %>
+				
+	<%= f.password_field :password, class: "form-control", placeholder: "Password" %>			
+
+	<%= f.submit "Log in", class:"btn btn-success btn-lg" %>
+
+<% end %>
