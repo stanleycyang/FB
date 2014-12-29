@@ -6,7 +6,7 @@
 
 			<% if logged_in? %>
 
-				<nav id="logged_in_nav">
+				<nav id="logged_in_nav" class="hidden-sm hidden-xs">
 					
 					<%= link_to @current_user.name, @current_user, class: "head_nav_links" %>
 					<%= link_to "Home", root_path, class: "head_nav_links" %>
