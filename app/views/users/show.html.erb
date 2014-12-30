@@ -1,2 +1,24 @@
 <% provide :title, @user.name %>
 
+<div class="row" id="profile">
+
+	<aside class="col-md-3">
+		<section class="user_info">
+			<h2><%= @user.name %></h2>
+		</section>
+	</aside>
+
+	<div class="col-md-6">
+		<%= render 'shared/status_form' if current_user?(@user) %>
+		
+		<% if @user.statuses.any? %>			
+			
+			<ol class="statuses">
+				<%= render @statuses %>	
+			</ol>
+			<%= will_paginate @statuses %>
+
+		<% end %>
+	</div>
+
+</div>

@@ -6,6 +6,8 @@
 $main-color: #3a5795;
 $white: #fff;
 $light-gray: #edf0f5;
+$text-gray: #7f7f7f;
+$link-blue: #3b5998;
 
 // Font
 $font: 'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
@@ -44,6 +46,16 @@ $top-size: 70px;
 	height: 100%;	
 }
 
+@mixin status_box
+{
+	background-color: $white;
+	border: 1px solid;
+	border-color: #e9eaed #dfe0e4 #d0d1d5;
+	-webkit-border-radius: 3px;
+	padding: 12px;
+	margin: 10px 0;
+	width: 94%;
+}
 
 header
 {
@@ -69,13 +81,14 @@ header
 
 html, body 
 {	
-	font-family: $font;		
+	font-family: $font;	
+
 	>div
 	{		
 		position: relative;	
-		top: $top-size;	
-		padding-bottom: $top-size;
-		height: 100%;					
+		top: $top-size;			
+		height: 100%;
+
 	}	
 	@include full_size;
 	@include clean_box;
@@ -173,11 +186,64 @@ nav#logged_in_nav
 
 }
 
+// Adding padding at the bottom
+
+div#user_index_all, div#profile
+{
+	padding-bottom: 100px;
+}
+
+div#profile
+{
+	background-color: $light-gray;
+	font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+	
+
+
+	ol.statuses
+	{
+		list-style: none;
+		text-align: left;
+
+
+		li.status_updates
+		{
+			@include status_box;
+
+			div.dropdown
+			{
+				float: right;
+				margin-top: -18px;				
+				span.glyphicon-chevron-down
+				{					
+					font-size: 0.8em;
+					cursor: pointer;
+					
+				}	
+			}
+			
+
+			> a
+			{
+				font-weight: bold;
+				color: $link-blue;
+				cursor: pointer;
+				font-size: 15px;
+			}
+			small
+			{
+				color: $text-gray;
+			}
+		}
+	}
+
+}
+
 div#home
 {	
 	background-color: $light-gray;	
 	width: 100%;
-	height: 100%;	
+	height: 100%;		
 
 	div.home-features
 	{
