@@ -242,7 +242,8 @@ div#profile
 {	
 	background-color: $light-gray;
 	font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
-	
+	min-height: 100%;
+	max-height: auto;
 	aside
 	{
 		position: relative;
