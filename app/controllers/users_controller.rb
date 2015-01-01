@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @statuses = @user.statuses.paginate(page: params[:page])
+
+    @status = @current_user.statuses.build if logged_in?
     
   end
 
@@ -59,14 +61,6 @@ class UsersController < ApplicationController
 
   def get_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in"
-      redirect_to login_url
-    end
   end
 
   # Confirms correct user

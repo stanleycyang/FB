@@ -1,2 +1,10 @@
+<li id="status_form">
 
+	<%= form_for(@status, html: {class: ""}) do |f| %>
+	  
+	    <%= f.text_area :content, placeholder: "Compose new status.." %>
+	  
+	  <%= f.submit "Post", class: "post_status" %>
+	<% end %>
 
+</li>

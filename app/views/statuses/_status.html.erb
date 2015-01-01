@@ -13,11 +13,11 @@
 
 			<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="drop-<%= status.id %>">
 
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#<%= status.id %>">View</a></li>	
+				<li role="presentation"><%= link_to "View", user_status_path(status.user.id, status.id) %></li>	
 
 				<% if current_user?(status.user) %>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#<%= status.id %>">Edit</a></li>			
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#<%= status.id %>">Delete</a></li>
+				<li role="presentation"><%= link_to "Edit", edit_user_status_path(status.user.id, status.id) %></li>			
+				<li role="presentation"><%= link_to "Delete", status, method: :delete, data:{confirm: "Are you sure?"} %></li>
 				<% end %>			
 			</ul>
 		</div>
