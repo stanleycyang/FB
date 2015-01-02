@@ -6,7 +6,29 @@
 
 			<% if logged_in? %>
 
-				<nav id="logged_in_nav">
+				<nav id="logged_in_nav_mobile" class="hidden-lg hidden-md">
+					
+					<%= link_to "", @current_user, class: "glyphicon glyphicon-user head_nav_links_mobile" %>
+					<%= link_to "", home_path, class: "glyphicon glyphicon-home head_nav_links_mobile" %>
+					<!-- Dropdown -->
+					<div class="dropdown">					  
+					    
+					    <b class="glyphicon glyphicon-collapse-down" id="header_menu_dropdown_mobile" data-toggle="dropdown" aria-expanded="true"></b>
+					  
+						<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="header_menu_dropdown_mobile">
+
+
+							<li role="presentation"><%= link_to "Users", users_path %></li>
+
+							<li role="presentation"><%= link_to "Settings", edit_user_path(current_user) %></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><%= link_to "Log out", logout_path, method: "delete" %></li>
+						</ul>
+					   
+					</div>
+				</nav>
+
+				<nav id="logged_in_nav" class="hidden-sm hidden-xs">
 					
 					<%= link_to @current_user.name, @current_user, class: "head_nav_links" %>
 					<%= link_to "Home", home_path, class: "head_nav_links" %>

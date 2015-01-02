@@ -6,7 +6,7 @@
 		<section class="user_info">
 			<h4><%= @user.name %></h4>
 			
-			<%= image_tag @user.picture.url, class: "img-responsive" if @user.picture? %>
+			<%= link_to image_tag(@user.picture.url, class: "img-responsive"), @user.picture.url if @user.picture? %>
 
 			<%= image_tag "default.jpg", class: "img-responsive" if !@user.picture? %>
 
