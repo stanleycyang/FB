@@ -3,16 +3,30 @@
 	<%= form_for(@status, html: {multipart: true}) do |f| %>
 	  
 	    <%= f.text_area :content, placeholder: "Compose new status.." %>	    
-	  
-	  <%= f.submit "Post", class: "post_status" %>
-	    	
-	  	<%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+	
+	<div class="glyphicon glyphicon-camera" id="camera"></div>
+
+	<span id="file_name"></span>
+	<%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png', id: "image_input" %>
+
+	<%= f.submit "Post", class: "post_status" %>
+	    
+
 	  
 	<% end %>
 
 </li>
 
 <script type="text/javascript">
+
+$("#camera").bind("click", function(){
+	document.getElementById("image_input").click();
+	$("#image_input").change(function(){
+		$("#file_name").text($(this).val());
+	});
+});
+
+
   $('#micropost_picture').bind('change', function() {
     size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {

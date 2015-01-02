@@ -23,7 +23,8 @@
 		</div>
 
 		<p><%= status.content %></p>
-		<%= image_tag status.picture.url if status.picture? %>
+		
+		<%= link_to image_tag(status.picture.url, class: "img-responsive"), status.picture.url  if status.picture? %> 
 		
 		
 		

@@ -14,10 +14,10 @@ class StatusesController < ApplicationController
     @status = current_user.statuses.build(status_params)
     if @status.save
       flash[:success] = "Status created!"
-      redirect_to current_user
+      redirect_back_or home_url
     else
       flash[:danger] = "Invalid status!"
-      redirect_to current_user
+      redirect_back_or home_url
     end
     
   end

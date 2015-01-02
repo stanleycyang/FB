@@ -8,6 +8,7 @@
 				<%= link_to @status.user.name, @status.user %><br />
 				<small><%= time_ago_in_words(@status.created_at) %> ago</small>
 				<p><%= @status.content %></p>
+				<%= image_tag @status.picture.url if @status.picture? %>
 
 					
 			</li>	

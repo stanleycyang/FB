@@ -4,7 +4,20 @@
 
 	<aside class="col-md-3">
 		<section class="user_info">
-			<%= @user.name %>
+			<h4><%= @user.name %></h4>
+			
+			<%= image_tag @user.picture.url, class: "img-responsive" if @user.picture? %>
+
+			<%= image_tag "default.jpg", class: "img-responsive" if !@user.picture? %>
+
+			<!-- <%= form_for @user, html: {multipart: true} do |f| %>
+			
+			<span>
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+			</span>
+			<%= f.submit "Post" %>
+			<% end %> -->
+
 		</section>
 	</aside>
 
@@ -15,6 +28,13 @@
 
 			<% if @user.statuses.any? %>	
 				<%= render @statuses %>	
+			<% else %>
+				<li class="status_updates">
+
+					
+					This user has not posted anything yet.
+
+				</li>
 			<% end %>
 			<%= will_paginate @statuses if @user.statuses.any? %>
 		</ol>

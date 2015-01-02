@@ -215,9 +215,14 @@ nav#logged_in_nav
 
 // Adding padding at the bottom
 
-div#user_index_all, div#profile
+div#user_index_all, div#profile, div#home-page, div#show_status
 {
-	padding-bottom: 100px;
+	padding-bottom: 100px;	
+}
+
+div#profile, div#home-page, div#show_status
+{
+	background-color: $light-gray;
 }
 
 li#status_form
@@ -231,33 +236,55 @@ li#status_form
 	    width: 100%;	
 	    border: 0;    
 	}
+	input[type="file"]
+	{
+		display: none;
+	}
 	input[type="submit"]
 	{
 		@include blue_button;			
 			
 	}
+	.glyphicon 
+	{
+		float: left;
+		top: 5px;
+		font-size: 1.5em;
+		color: $text-gray;
+		cursor: pointer;
+	}
+	span#file_name
+	{
+		float: left;
+		margin: 7px 0 0 5px;
+		color: $text-gray;
+	}
 }
 
 div#profile
-{	
-	background-color: $light-gray;
+{		
 	font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
 	min-height: 100%;
 	max-height: auto;
 	aside
 	{
-		position: relative;
+		position: relative;		
+		
 		@include clean_box;
-
+		@include status_box;	
+		margin-left: 20px;
+		margin-right: -20px;
 		section{			
-			@include status_box;			
+					
 			position: relative;	
-			margin-left: 20px;
-			margin-right: 20px;
+			
+			img
+			{
+				margin: 0 auto;
+			}
 
 		}		
 	}	
-
 }
 
 ol.statuses
@@ -299,8 +326,7 @@ ol.statuses
 	}
 
 div#home
-{	
-	background-color: $light-gray;	
+{		
 	width: 100%;
 	height: 100%;		
 
@@ -330,8 +356,7 @@ div#home
 }
 
 div#show_status
-{
-	background-color: $light-gray;
+{	
 	@include full_size;
 }
 
@@ -374,7 +399,7 @@ div#home_login_form
 
 form#new_user,form.edit_user, div#login_page > form#login_form
 {
-	input[type="text"], input[type="password"]
+	input[type="text"], input[type="password"], input[type="file"]
 	{
 		font-size: 1.3em;
 		height: 2.4em;

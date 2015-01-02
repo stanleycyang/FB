@@ -6,11 +6,17 @@
 		<h2>Edit user information:</h2>
 		<br />
 
-		<%= form_for(@user) do |f| %>
+		<%= form_for(@user , html: {multipart: true}) do |f| %>
 			<%= f.text_field :name, class:"form-control", placeholder:"Full name" %>
 			<%= f.text_field :email, class:"form-control", placeholder:"Email address" %>
 			<%= f.password_field :password, class:"form-control", placeholder:"Password" %>
+			
+			<span>
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+			</span>
+
 			<%= f.submit "Save changes", class:"btn btn-success btn-lg" %>
+			
 		<% end %>
 	</div>
 </div>

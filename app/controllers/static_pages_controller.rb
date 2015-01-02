@@ -12,4 +12,10 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
+  def feed
+    @status = current_user.statuses.build if logged_in?
+
+    @statuses = Status.all.paginate(page: params[:page])
+  end
 end
