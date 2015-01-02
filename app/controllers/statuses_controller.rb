@@ -51,7 +51,7 @@ class StatusesController < ApplicationController
   private
 
   def status_params
-    params.require(:status).permit(:content)
+    params.require(:status).permit(:content, :picture)
   end
 
   def correct_user

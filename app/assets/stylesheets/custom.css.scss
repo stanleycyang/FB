@@ -350,11 +350,8 @@ div#home_login_form
 		}
 		input[type="submit"]
 		{
-			font-size: 1em;					
-			padding: 9px 6px;
-			border-radius: 3px;
-			background-color: $brand-primary;
-			border: 0;
+			@include blue_button;
+			padding: 6px 15px;
 		}
 		label.checkbox 
 		{

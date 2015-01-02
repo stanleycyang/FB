@@ -1,10 +1,22 @@
 <li id="status_form">
 
-	<%= form_for(@status, html: {class: ""}) do |f| %>
+	<%= form_for(@status, html: {multipart: true}) do |f| %>
 	  
-	    <%= f.text_area :content, placeholder: "Compose new status.." %>
+	    <%= f.text_area :content, placeholder: "Compose new status.." %>	    
 	  
 	  <%= f.submit "Post", class: "post_status" %>
+	    	
+	  	<%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+	  
 	<% end %>
 
 </li>
+
+<script type="text/javascript">
+  $('#micropost_picture').bind('change', function() {
+    size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>
